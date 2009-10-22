@@ -20,11 +20,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // This application will not work until you enter your Facebook application's API key here:
 
-static NSString* kApiKey = @"<YOUR API KEY>";
+static NSString* kApiKey = @"ead7f0b3e393397e63cc4ffc32f4abe5"; // public key for connectiproxy, replace with your own
 
 // Enter either your API secret or a callback URL (as described in documentation):
 static NSString* kApiSecret = nil; // @"<YOUR SECRET KEY>";
-static NSString* kGetSessionProxy = nil; // @"<YOUR SESSION CALLBACK)>";
+static NSString* kGetSessionProxy = @"http://localhost:3000/facebook/proxy"; // @"<YOUR SESSION CALLBACK)>";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -81,6 +81,8 @@ static NSString* kGetSessionProxy = nil; // @"<YOUR SESSION CALLBACK)>";
   _feedButton.hidden       = NO;
   _statusButton.hidden     = NO;
   _photoButton.hidden      = NO;
+  
+  _metaDataLabel.text = session.metaData;
 
   NSString* fql = [NSString stringWithFormat:
     @"select uid,name from user where uid == %lld", session.uid];

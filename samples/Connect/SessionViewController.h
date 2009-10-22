@@ -21,6 +21,7 @@
 @interface SessionViewController : UIViewController
     <FBDialogDelegate, FBSessionDelegate, FBRequestDelegate> {
   IBOutlet UILabel* _label;
+  IBOutlet UILabel* _metaDataLabel;
   IBOutlet UIButton* _permissionButton;
   IBOutlet UIButton* _feedButton;
   IBOutlet UIButton* _statusButton;

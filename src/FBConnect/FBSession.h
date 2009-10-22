@@ -39,6 +39,7 @@
   FBUID _uid;
   NSString* _sessionKey;
   NSString* _sessionSecret;
+  NSString* _metaData;
   NSDate* _expirationDate;
   NSMutableArray* _requestQueue;
   NSDate* _lastRequestTime;
@@ -70,6 +71,11 @@
  * Your application's API secret, as passed to the constructor.
  */
 @property(nonatomic,readonly) NSString* apiSecret;
+
+/**
+ * Extra data that can be passed by proxy server.
+ */
+@property(nonatomic,readonly) NSString* metaData;
 
 /**
  * The URL to call to create a session key after login.
@@ -145,7 +151,7 @@
  * Begins a session for a user with a given key and secret.
  */
 - (void)begin:(FBUID)uid sessionKey:(NSString*)sessionKey sessionSecret:(NSString*)sessionSecret
-  expires:(NSDate*)expires;
+  expires:(NSDate*)expires metaData:(NSString*)metaData;
 
 /**
  * Resumes a previous session whose uid, session key, and secret are cached on disk.

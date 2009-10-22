@@ -111,11 +111,12 @@ static NSString* kLoginURL = @"http://www.facebook.com/login.php";
   NSString* sessionSecret = [object objectForKey:@"secret"];
   NSTimeInterval expires = [[object objectForKey:@"expires"] floatValue];
   NSDate* expiration = expires ? [NSDate dateWithTimeIntervalSince1970:expires] : nil;
+  NSString* metaData = [object objectForKey:@"meta_data"];
   
   [_getSessionRequest release];
   _getSessionRequest = nil;
 
-  [_session begin:uid sessionKey:sessionKey sessionSecret:sessionSecret expires:expiration];
+  [_session begin:uid sessionKey:sessionKey sessionSecret:sessionSecret expires:expiration metaData:metaData];
   [_session resume];
   
   [self dismissWithSuccess:YES animated:YES];

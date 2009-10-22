@@ -34,7 +34,7 @@ static FBSession* sharedSession = nil;
 
 @synthesize delegates = _delegates, apiKey = _apiKey, apiSecret = _apiSecret,
   getSessionProxy = _getSessionProxy, uid = _uid, sessionKey = _sessionKey,
-  sessionSecret = _sessionSecret, expirationDate = _expirationDate;
+  sessionSecret = _sessionSecret, expirationDate = _expirationDate, metaData = _metaData;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // class public
@@ -215,11 +215,12 @@ static FBSession* sharedSession = nil;
 }
 
 - (void)begin:(FBUID)uid sessionKey:(NSString*)sessionKey
-    sessionSecret:(NSString*)sessionSecret expires:(NSDate*)expires {
+    sessionSecret:(NSString*)sessionSecret expires:(NSDate*)expires metaData:(NSString*)metaData{
   _uid = uid;
   _sessionKey = [sessionKey copy];
   _sessionSecret = [sessionSecret copy];
   _expirationDate = [expires retain];
+  _metaData = [metaData copy];
   
   [self save];
 }
